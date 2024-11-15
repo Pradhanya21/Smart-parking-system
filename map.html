@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Parking App</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Parking Map - Coimbatore</h1>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var parkingLocations = [
+      [11.0176, 76.9674],
+      [10.9902, 76.9629],
+      [11.0102, 76.9504],
+      [11.0269, 76.9058],
+      [11.0171, 76.9853],
+      [11.0238, 76.9452],
+      [10.9991, 76.9773],
+      [11.0118, 76.9615],
+      [10.9974, 76.9585],
+      [11.0232, 76.9608],
+      [11.0556, 76.9939],
+      [11.0304, 77.0391],
+      [11.0463, 76.9471],
+      [11.0271, 76.9830],
+      [11.0304, 77.0391]
+    ];
+
+    var map = L.map('map').setView([11.0168, 76.9558], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',   {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    for (var i = 0; i < parkingLocations.length; i++) {
+      L.marker(parkingLocations[i]).addTo(map).bindPopup('Parking Location ' + (i + 1));
+    }
+  </script>
+
+</html>
